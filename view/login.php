@@ -1,5 +1,8 @@
 <?php 
 session_start();
+if(!isset($_SESSION["authentication"])) {
+	$_SESSION["authentication"] = "";
+}
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -43,11 +46,11 @@ session_start();
 	</nav>
 	<h1 style="text-align: center; margin-top: 50px;">Das ist eine Testeseite für Cross-Site-Scripting</h1>
 	<?php
-	$userdatabase = file("../database/users.txt");
-	$counter = 0;
-	$emails = array();
-	$passwords = array();
-	foreach($userdatabase as $user) {
+	$userdatabase = file("../database/users.txt"); // my data
+	$counter = 0; // counter of speration of email and password
+	$emails = array(); // initializing array
+	$passwords = array(); // initializing array
+	foreach($userdatabase as $user) { 
 		$user_details = explode('|', $user); // This splits the string via a defined character. Such as this one: |
 		foreach($user_details as $individual_data) {
 			if(($counter % 2) == 0) {
@@ -64,17 +67,14 @@ session_start();
 		$arrayLength = count($emails);
 		for($i = 0; $i < $arrayLength; $i++) {
 			if($userInputEmail == $emails[$i] && $userInputPassword == $passwords[$i]) {
-				$isAuth = true;
 				$_SESSION["authentication"] = true;
+				header("Refresh:0");
 				break;
 			} else {
-				$isAuth = false;
+				$_SESSION["authentication"] = false;
 			}
 		}
-		echo "hi".$isAuth;
-		if($isAuth == false) {
-			$_SESSION["authentication"] = false;
-		}
+			
 	}
 	if($_SESSION["authentication"] == true) {
 		echo "<p style='color: black; text-align: center;'>Authentication status: <span style='color: green'>true</span></p>";
@@ -110,7 +110,6 @@ session_start();
 	 </form>
 	 <?php }
 	 if(isset($_POST["button"])) {
-		$isAuth = false;
 		$_SESSION["authentication"] = false;
 		header("Refresh:0");
 	}
