@@ -1,3 +1,6 @@
+<?php 
+session_start();
+?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -14,10 +17,28 @@
 		<ul>
 			<li><a href="./index.php">Post</a></li>
 			<li><a href="./view/get.php">Get</a></li>
-			<li><a href="./view/login.php">Login</a></li>
+			<?php
+		if($_SESSION["authentication"] == true) {
+			?>
+			<li><a href="./login.php">Logout</a></li>
+
+		<?php 
+		} else { 
+			?>
+			<li><a href="./login.php">Login</a></li>
+		<?php	
+		}
+		?>
 		</ul>			
 	</nav>
 	<h1 style="text-align: center; margin-top: 50px;">Das ist eine Testeseite für Cross-Site-Scripting</h1>
+	<?php
+		if($_SESSION["authentication"] == true) {
+			echo "<p style='color: black; text-align: center;'>Authentication status: <span style='color: green'>true</span></p>";
+		} else {
+			echo "<p style='color: black; text-align: center;'>Authentication status: <span style='color: red'>false</span></p>";
+		}
+		?>
 	<form action="index.php" method="post" id="form_id">
 		<div style="display: flex; justify-content: center; gap: 10px">
 		<p>Eingabefeld: </p><input type="text" name="search" placeholder="Bitte füge hier dein XSS ein" value="">
