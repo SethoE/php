@@ -1,0 +1,51 @@
+* {
+    box-sizing: border-box;
+  }
+  
+  html {
+    font-family: sans-serif;
+  }
+  
+  body {
+    margin: 0;
+  }
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    background-color: #343a40;
+    align-items: baseline;
+}
+
+.pageName {
+  color: white;
+}
+
+.header {
+    color: white;
+    margin-left: 15px;
+    text-decoration: underline;
+  }
+ul {
+    list-style-type: none;
+    overflow: hidden;
+    margin: auto 0;
+    padding: 0;
+}
+li {
+    float: left;
+    color: white;
+}
+
+li a {
+    padding: 15px;
+    display: block;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+}
+
+a:hover {
+    color: grey;
+}
+

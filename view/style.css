@@ -1,0 +1,111 @@
+* {
+    box-sizing: border-box;
+  }
+  
+  html {
+    font-family: sans-serif;
+  }
+  
+  body {
+    margin: 0;
+  }
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    background-color: #343a40;
+    align-items: baseline;
+}
+
+.pageName {
+  color: white;
+}
+.header {
+    color: white;
+    margin-left: 15px;
+    text-decoration: underline;
+  }
+ul {
+    list-style-type: none;
+    overflow: hidden;
+    margin: auto 0;
+    padding: 0;
+}
+li {
+    float: left;
+    color: white;
+}
+
+li a {
+    padding: 15px;
+    display: block;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+}
+
+a:hover {
+    color: grey;
+}
+
+/**
+* Login form
+*/
+#form_id {
+  padding: 50px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 50%;
+  margin: 100px auto;
+  background-color: #343a40;
+}
+
+.formHeader {
+  color: white;
+}
+.textInput {
+  padding: 12px 20px;
+  width: 100%;
+  margin: 0;
+  display: inline-flex;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+
+input[type=submit] {
+  background-color: #4CAF50;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+p {
+  text-align: left;
+  color: white;
+}
+/**
+*   custom select
+**/
+
+select {
+  background-color: #3369ff;
+  color: white;
+  width: 50%;
+  padding: 15px;
+  margin-left: 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+
+.favFood {
+  display: inline-flex;
+}
