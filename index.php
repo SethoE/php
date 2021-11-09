@@ -25,7 +25,7 @@ session_start();
 		<?php 
 		} else { 
 			?>
-			<li><a href="./login.php">Login</a></li>
+			<li><a href="./view/login.php">Login</a></li>
 		<?php	
 		}
 		?>

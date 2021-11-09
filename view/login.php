@@ -47,7 +47,6 @@ session_start();
 	$counter = 0;
 	$emails = array();
 	$passwords = array();
-	$isAuth = false;
 	foreach($userdatabase as $user) {
 		$user_details = explode('|', $user); // This splits the string via a defined character. Such as this one: |
 		foreach($user_details as $individual_data) {
@@ -59,7 +58,7 @@ session_start();
 			$counter++;
 		}
 	}
-	if(isset($_POST["email"]) && isset($_POST["password"]) && !empty($_POST["email"]) && !empty($_POST["password"])) {
+	if(isset($_POST["email"]) && isset($_POST["password"]) && !empty($_POST["email"]) && !empty($_POST["password"]) && isset($_POST["login"])) {
 		$userInputEmail = $_POST["email"];
 		$userInputPassword = $_POST["password"];
 		$arrayLength = count($emails);
@@ -67,9 +66,12 @@ session_start();
 			if($userInputEmail == $emails[$i] && $userInputPassword == $passwords[$i]) {
 				$isAuth = true;
 				$_SESSION["authentication"] = true;
-				header("Refresh:0");
-			} 
+				break;
+			} else {
+				$isAuth = false;
+			}
 		}
+		echo "hi".$isAuth;
 		if($isAuth == false) {
 			$_SESSION["authentication"] = false;
 		}
