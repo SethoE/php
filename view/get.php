@@ -5,6 +5,7 @@
 	<title>Testen von XSS-Eingaben</title>
 	<script src="../app.js" defer></script>
 	<link rel="stylesheet" href="style.css">
+	<?php include("../search.php");?>
 </head>
 <body>
 	<nav>
@@ -41,7 +42,13 @@
 	<?php
 	if(isset($_GET["fname"]) || isset($_GET["lname"]) || isset($_GET["programmer"]) || isset($_GET["age"]) || isset($_GET["favFood"])) {
 		$firstname = $_GET["fname"];
+		if(!empty($firstname)) {
+			$firstname = filterPost($firstname);
+		}
 		$lastname = $_GET["lname"];
+		if(!empty($lastname)) {
+			$lastname = filterPost($lastname);
+		}
 		if(!isset($_GET["programmer"])) {
 			$isProgrammer = "kein/e Programmierer/in";
 		} else {
